@@ -16,9 +16,11 @@ cd ../../../
 python -m llm_lib.server --model_path /weka/Projects/local_llms/model_weights/vicuna13B --load_in_8bit 
 ```
 
+Keep the HOST (e.g., 4gpu-01.ai...) and the PORT (default to 8000) of the server. These will be used in step 4
+
 
 Step 4: **Open another bash client**, cd to this example direction, and run
 ```bash
 conda activate llm_lib
-python example.py --host SERVER_HOST --sample_text "Answer the question: What do you know about the Applied Artificial Intelligence Institute?"
+python example.py --host http://HOST:PORT --sample_text "Answer the question: What do you know about the Applied Artificial Intelligence Institute?"
 ```

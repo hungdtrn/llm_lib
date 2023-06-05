@@ -78,6 +78,8 @@ completion = local_llm.create_completion(prompt="Hello, How are you?", max_token
 
 **Note:** If you host the API server at a different machine with a different address, you need to replace "http://0.0.0.0:8000/v1" with your address.
 
+Examples are provided in examples/
+
 ## 3. Download model
 You can automatically download a model from HuggingFace (HF) using `download_model.py`
 ```bash
