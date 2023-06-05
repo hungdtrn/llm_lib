@@ -1,4 +1,4 @@
-# API Wrapper for local LLMs
+# LLM library for loading and using LLM models
 This library serves as a platform for utilizing and creating applications based on pre-existing foundation models. Its features include:    
 1. Loading large language models (LLMs) as PyTorch modules.
 2. Establishing an API server that resembles the ChatGPT API.
