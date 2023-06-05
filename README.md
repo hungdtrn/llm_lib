@@ -104,15 +104,18 @@ It is important to note that models ending with `4bits-128g` or `4bits` require 
 For `*-4bits-128g` models, they should be executed with the flags `--wbits 4 --groupsize 128`.
 For `*-4bits` models, only the `--wbits 4` flag needs to be used."
 
-Example
+Here are some snapshots of how to use the downloaded models on weka
 ```bash
 
 # As pytorch module
 transformer, tokenizer = load_model(model_path="/weka/Projects/local_llms/model_weights/TheBloke_vicuna-13B-1.1-GPTQ-4bit-128g/", wbits=4, groupsize=128)
+transformer, tokenizer = load_model(model_path="/weka/Projects/local_llms/model_weights/vicuna13B/")
 
 # As API
 python -m llm_lib.server --model_path /weka/Projects/local_llms/model_weights/TheBloke_vicuna-13B-1.1-GPTQ-4bit-128g/ --wbits 4 --groupsize 128
 ```
+
+See `examples/` folder for detailed examples.
 
 ## 5. Documentation
 The proper documation will be written soon.
