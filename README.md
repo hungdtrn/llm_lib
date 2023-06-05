@@ -3,6 +3,7 @@ This library serves as a platform for utilizing and creating applications based 
 1. Loading large language models (LLMs) as PyTorch modules.
 2. Establishing an API server that resembles the ChatGPT API.
 
+
 Illustrative examples for each use case can be found in the `examples/` folder.
 ## 1. Installation
 
@@ -81,6 +82,10 @@ completion = local_llm.create_completion(prompt="Hello, How are you?", max_token
 Examples are provided in examples/
 
 ## 3. Download model
+The library current supports loading:
+- LLM models with default weights 
+- LLM models with 8bit and 4bit quantization.
+
 You can automatically download a model from HuggingFace (HF) using `download_model.py`
 ```bash
 python download-model.py organization/model
@@ -91,7 +96,7 @@ For example
 python download-model.py facebook/opt-1.3b
 ```
 
-## 4. Supported Pre-trained Weights
+## 4. Donwloaded Pre-trained Weights
 **A2I2 students and researchers** can utilize the downloaded model weights stored in `/weka/Projects/local_llms/model_weights/`. 
 
 It is important to note that models ending with `4bits-128g` or `4bits` require specific flags to be enabled during execution.
