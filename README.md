@@ -1,0 +1,91 @@
+# API Wrapper for local LLMs
+This library serves as a platform for utilizing and creating applications based on pre-existing foundation models. Its features include:    
+1. Loading large language models (LLMs) as PyTorch modules.
+2. Establishing an API server that resembles the ChatGPT API.
+
+Illustrative examples for each use case can be found in the example folder.
+## Installation
+
+Use the package manager [conda](https://conda.io/projects/conda/en/latest/index.html) to install the required parameters
+
+```bash
+conda env create -f env.yml
+```
+
+Install the dependencies of the module (GPTQ)
+```bash
+cd llm_lib/modules/repositories/GPTQ-for-LLaMa/
+python setup_cuda.py install
+```
+
+After installing GPTQ, navigate back the the root folder 
+```bash
+cd ../../../../
+```
+
+Add the library to PYTHONPATH via
+```bash
+pip install -e .
+```
+
+### Usage
+The library supports two main use cases:
+1. Loading LLMs and utilizing them as regular PyTorch modules. This is ideal for users seeking complete control over the model.
+2. Establishing an API server resembling the ChatGPT API and employing an API client to connect to the API. This is suitable for users who prefer not to modify their model code while leveraging LLMs to process their data. 
+
+#### Use LLM as Pytorch Module
+```bash
+from llm_lib.utils import load_model
+
+transformer, tokenizer = load_model(model_path, **kwargs)
+```
+
+Supported parameters for `load_model`
+| Parameter | Description |
+| --- | --- |
+| model_path | Path to the downloaded model weights. (For A2I2 students/researchers, please refer to the Supported Pre-trained Weights section) |
+| load_in_8bit | Determines whether to load the model with 8-bit precision. This option allows for loading models using fewer GPUs, with a slight tradeoff in performance. |
+| auto_devices | Controls whether the GPU usage is distributed across multiple GPUs automatically. |
+| wbits, groupsize | Parameters for utilizing GPTQ quantization. For more details, please refer to [this paper](https://arxiv.org/abs/2210.17323) and [this repository](https://github.com/qwopqwop200/GPTQ-for-LLaMa). |
+
+Examples are provided in `examples/`
+
+#### Use LLM via API
+
+#### Step 1: Setting up the API server
+By default the APIs will be accessed via "http://0.0.0.0:8000/v1/". The documentation of the APIs is accessed via "http://0.0.0.0:8000/v1/docs#"
+
+```
+python -m llm_lib.server --model_path PATH_TO_MODEL_WEIGHT
+```
+
+Supported parameters are similar to those in `load_model` above
+
+
+#### Step 2: Use the LLMClient
+Example of using the LLMClient in the python code
+
+```
+from llm_lib.client import LLMClient
+
+local_llm = LLMClient(host="http://0.0.0.0:8000/v1")
+
+# Sentence completion
+completion = local_llm.create_completion(prompt="Hello, How are you?", max_tokens=128, temperature=1.0).response.choices[0].text.strip()
+```
+
+**Note:** If you host the API server at a different machine with a different address, you need to replace "http://0.0.0.0:8000/v1" with your address.
+
+
+### Documentation
+The proper documation will be written soon.
+
+### Resources
+Some of the codes are borrowed from
+- [llama-cpp-python](https://github.com/abetlen/llama-cpp-python)
+- [text-generation-webui](https://github.com/oobabooga/text-generation-webui)
+- [GPTQ-for-llama](https://github.com/qwopqwop200/GPTQ-for-LLaMa)
+- [Huggingface](https://huggingface.co/docs/transformers/v4.29.1/en/model_doc/llama#transformers.LlamaForCausalLM)
+
+### License
+This project is licensed under the terms of the MIT license.
