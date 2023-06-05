@@ -33,7 +33,7 @@ pip install -e .
 ## Usage
 The library supports two main use cases:
 1. Loading LLMs and utilizing them as regular PyTorch modules. This is ideal for users seeking complete control over the model.
-2. Establishing an API server resembling the ChatGPT API and employing an API client to connect to the API. This is suitable for users who prefer not to modify their model code while leveraging LLMs to process their data. 
+2. Establishing an API server resembling the ChatGPT API and employing an API client to connect to the API. This is suitable for users who prefer not to modify their model code. 
 
 ### Use LLM as Pytorch Module
 ```bash
