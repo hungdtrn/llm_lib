@@ -2,6 +2,7 @@
 This library serves as a platform for utilizing and creating applications based on pre-existing foundation models. Its features include:    
 1. Loading large language models (LLMs) as PyTorch modules.
 2. Establishing an API server that resembles the ChatGPT API.
+3. Support loading 8bit and 4bit quantized models for faster inferences.
 
 
 Illustrative examples for each use case can be found in the `examples/` folder.
