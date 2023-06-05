@@ -56,13 +56,13 @@ def load_model(model_path, load_in_8bit=False, wbits=0, groupsize=-1, auto_devic
         elif auto_devices:
             params["device_map"] = 'auto'
             total_mem = (torch.cuda.get_device_properties(0).total_memory / (1024 * 1024))
-            suggestion = round((total_mem - 1000) / 1000) * 1000
+            suggestion = round((total_mem - 2000) / 1000) * 1000
             if total_mem - suggestion < 800:
                 suggestion -= 1000
             suggestion = int(round(suggestion / 1000))
             print(f"\033[1;32;1mAuto-assiging --gpu-memory {suggestion} for your GPU to try to prevent out-of-memory errors.\nYou can manually set other values.\033[0;37;0m")
 
-            max_memory = {}
+            max_memory = {'cpu': cpu_memory.strip() if cpu_memory is not None else '99GIB'}
             for i in range(torch.cuda.device_count()):
                 _ = torch.tensor([0], device=i)
                 max_memory[i] = f'{suggestion}GIB'
@@ -70,6 +70,7 @@ def load_model(model_path, load_in_8bit=False, wbits=0, groupsize=-1, auto_devic
             params['max_memory'] = max_memory
 
         checkpoint = Path(model_path)
+        print(params)
         
         # if load_in_8bit and params.get('max_memory', None) is not None and params['device_map'] == 'auto':
         if params.get('max_memory', None) is not None and params['device_map'] == 'auto':
