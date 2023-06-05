@@ -3,7 +3,7 @@ This library serves as a platform for utilizing and creating applications based 
 1. Loading large language models (LLMs) as PyTorch modules.
 2. Establishing an API server that resembles the ChatGPT API.
 
-Illustrative examples for each use case can be found in the example folder.
+Illustrative examples for each use case can be found in the `examples/` folder.
 ## 1. Installation
 
 Use the package manager [conda](https://conda.io/projects/conda/en/latest/index.html) to install the required parameters
