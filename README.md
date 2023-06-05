@@ -97,7 +97,7 @@ For example
 python download-model.py facebook/opt-1.3b
 ```
 
-## 4. Donwloaded Pre-trained Weights
+## 4. (A2I2) Donwloaded Pre-trained Weights
 **A2I2 students and researchers** can utilize the downloaded model weights stored in `/weka/Projects/local_llms/model_weights/`. 
 
 It is important to note that models ending with `4bits-128g` or `4bits` require specific flags to be enabled during execution.
