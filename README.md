@@ -2,6 +2,7 @@
 This library serves as a platform for utilizing and creating applications based on pre-existing foundation models. Its features include:    
 1. Loading large language models (LLMs) as PyTorch modules.
 2. Establishing an API server that resembles the ChatGPT API.
+3. Support loading 8bit and 4bit quantized models for faster inferences.
 
 
 Illustrative examples for each use case can be found in the `examples/` folder.
@@ -96,22 +97,25 @@ For example
 python download-model.py facebook/opt-1.3b
 ```
 
-## 4. Donwloaded Pre-trained Weights
+## 4. (A2I2) Donwloaded Pre-trained Weights
 **A2I2 students and researchers** can utilize the downloaded model weights stored in `/weka/Projects/local_llms/model_weights/`. 
 
 It is important to note that models ending with `4bits-128g` or `4bits` require specific flags to be enabled during execution.
 For `*-4bits-128g` models, they should be executed with the flags `--wbits 4 --groupsize 128`.
 For `*-4bits` models, only the `--wbits 4` flag needs to be used."
 
-Example
+Here are some snapshots of how to use the downloaded models on weka
 ```bash
 
 # As pytorch module
 transformer, tokenizer = load_model(model_path="/weka/Projects/local_llms/model_weights/TheBloke_vicuna-13B-1.1-GPTQ-4bit-128g/", wbits=4, groupsize=128)
+transformer, tokenizer = load_model(model_path="/weka/Projects/local_llms/model_weights/vicuna13B/")
 
 # As API
 python -m llm_lib.server --model_path /weka/Projects/local_llms/model_weights/TheBloke_vicuna-13B-1.1-GPTQ-4bit-128g/ --wbits 4 --groupsize 128
 ```
+
+See `examples/` folder for detailed examples.
 
 ## 5. Documentation
 The proper documation will be written soon.
