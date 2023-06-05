@@ -1,5 +1,29 @@
 import argparse
 from llm_lib.utils import load_model
+import torch.nn as nn
+
+class Model(nn.Module):
+    def __init__(self, transformer, tokenizer) -> None:
+        super().__init__()
+        self.transformer = transformer
+        self.tokenizer = tokenizer
+        self.device = transformer.device
+        
+    def forward(self, prompt):
+        params = {
+            "return_dict_in_generate": True,
+            "max_new_tokens": 40
+        }
+        encoding = self.tokenizer(prompt, return_tensors='pt')
+        for k in encoding.keys():
+            params[k] = encoding[k].to(self.transformer.device)
+            
+        outputs = self.transformer.generate(**params)
+        sequences = outputs.sequences.cuda()[0]
+        sequences = self.tokenizer.decode(sequences)
+        
+        return sequences
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -16,19 +40,10 @@ if __name__ == "__main__":
                                         wbits=args.wbits,
                                         groupsize=args.groupsize,
                                         auto_devices=args.auto_devices)
-
-    print("Sample text: ", args.sample_text)
-    params = {
-        "return_dict_in_generate": True,
-        "max_new_tokens": 20
-    }
-    encoding = tokenizer(args.sample_text, return_tensors='pt')
-    for k in encoding.keys():
-        params[k] = encoding[k].to(transformer.device)
-        
-    outputs = transformer.generate(**params)
-    sequences = outputs.sequences.cuda()[0]
-    sequences = tokenizer.decode(sequences)
+    model = Model(transformer, tokenizer)
     
+    print("Sample text: ", args.sample_text)
+    
+    sequences = model(args.sample_text)
     print("Output:", sequences)
     

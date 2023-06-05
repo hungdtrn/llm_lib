@@ -70,7 +70,6 @@ def load_model(model_path, load_in_8bit=False, wbits=0, groupsize=-1, auto_devic
             params['max_memory'] = max_memory
 
         checkpoint = Path(model_path)
-        print(params)
         
         # if load_in_8bit and params.get('max_memory', None) is not None and params['device_map'] == 'auto':
         if params.get('max_memory', None) is not None and params['device_map'] == 'auto':
