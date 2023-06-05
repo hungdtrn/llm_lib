@@ -92,7 +92,7 @@ python download-model.py facebook/opt-1.3b
 ```
 
 ## 4. Supported Pre-trained Weights
-A2I2 students and researchers can utilize the downloaded model weights stored in /weka/Projects/local_llms/model_weights/. It is important to note that models ending with 4bits-128g or 4bits require specific flags to be enabled during execution.
+A2I2 students and researchers can utilize the downloaded model weights stored in `/weka/Projects/local_llms/model_weights/`. It is important to note that models ending with 4bits-128g or 4bits require specific flags to be enabled during execution.
 For `*-4bits-128g` models, they should be executed with the flags `--wbits 4 --groupsize 128`.
 For `*-4bits` models, only the `--wbits 4` flag needs to be used."
 
