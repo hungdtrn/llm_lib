@@ -4,7 +4,7 @@ This library serves as a platform for utilizing and creating applications based 
 2. Establishing an API server that resembles the ChatGPT API.
 
 Illustrative examples for each use case can be found in the example folder.
-## Installation
+## 1. Installation
 
 Use the package manager [conda](https://conda.io/projects/conda/en/latest/index.html) to install the required parameters
 
@@ -30,12 +30,12 @@ Add the library to PYTHONPATH via
 pip install -e .
 ```
 
-## Usage
+## 2. Usage
 The library supports two main use cases:
 1. Loading LLMs and utilizing them as regular PyTorch modules. This is ideal for users seeking complete control over the model.
 2. Establishing an API server resembling the ChatGPT API and employing an API client to connect to the API. This is suitable for users who prefer not to modify their model code. 
 
-### Use LLM as Pytorch Module
+### 2.1. Use LLM as Pytorch Module
 ```bash
 from llm_lib.utils import load_model
 
@@ -52,7 +52,7 @@ Supported parameters for `load_model`
 
 Examples are provided in `examples/`
 
-### Use LLM via API
+### 2.2. Use LLM via API
 
 ### Step 1: Setting up the API server
 By default the APIs will be accessed via "http://0.0.0.0:8000/v1/". The documentation of the APIs is accessed via "http://0.0.0.0:8000/v1/docs#"
@@ -78,7 +78,7 @@ completion = local_llm.create_completion(prompt="Hello, How are you?", max_token
 
 **Note:** If you host the API server at a different machine with a different address, you need to replace "http://0.0.0.0:8000/v1" with your address.
 
-## Download model
+## 3. Download model
 You can automatically download a model from HuggingFace (HF) using `download_model.py`
 ```bash
 python download-model.py organization/model
@@ -89,7 +89,7 @@ For example
 python download-model.py facebook/opt-1.3b
 ```
 
-## Supported Pre-trained Weights
+## 4. Supported Pre-trained Weights
 A2I2 students and researchers can utilize the downloaded model weights stored in /weka/Projects/local_llms/model_weights/. It is important to note that models ending with 4bits-128g or 4bits require specific flags to be enabled during execution.
 For `*-4bits-128g` models, they should be executed with the flags `--wbits 4 --groupsize 128`.
 For `*-4bits` models, only the `--wbits 4` flag needs to be used."
@@ -104,15 +104,13 @@ transformer, tokenizer = load_model(model_path="/weka/Projects/local_llms/model_
 python -m llm_lib.server --model_path /weka/Projects/local_llms/model_weights/TheBloke_vicuna-13B-1.1-GPTQ-4bit-128g/ --wbits 4 --groupsize 128
 ```
 
-## Documentation
+## 5. Documentation
 The proper documation will be written soon.
 
-## Resources
+## 6. Resources
 Some of the codes are borrowed from
 - [llama-cpp-python](https://github.com/abetlen/llama-cpp-python)
 - [text-generation-webui](https://github.com/oobabooga/text-generation-webui)
 - [GPTQ-for-llama](https://github.com/qwopqwop200/GPTQ-for-LLaMa)
 - [Huggingface](https://huggingface.co/docs/transformers/v4.29.1/en/model_doc/llama#transformers.LlamaForCausalLM)
 
-## License
-This project is licensed under the terms of the MIT license.
