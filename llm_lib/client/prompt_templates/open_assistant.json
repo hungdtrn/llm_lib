@@ -1,0 +1,6 @@
+{
+    "description": "Template used by OpenAssistant.",
+    "prompt_input": "<|prompter|>{prompt}\n\nInput:\n{input}<|endoftext|><|assistant|>",
+    "prompt_no_input": "<|prompter|>{prompt}<|endoftext|><|assistant|>",
+    "response_split": "<|assistant|>"    
+}

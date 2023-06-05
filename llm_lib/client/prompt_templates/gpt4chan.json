@@ -1,0 +1,8 @@
+{
+    "description": "Template used by Alpaca.",
+    "prompt_input": "-----\n--- 865467536\n{prompt}\nInput: {input}\n--- 865467537",
+    "prompt_no_input": "-----\n--- 865467536\n{prompt}\n--- 865467537",
+    "response_split": "865467537"    
+}
+
+

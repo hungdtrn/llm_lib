@@ -1,0 +1,8 @@
+{
+    "description": "Generic QA template",
+    "prompt_input": "Common sense questions and answers\n\nQuestion: {prompt}\n\nInput: {input}\n\nFactual answer:",
+    "prompt_no_input": "Common sense questions and answers\n\nQuestion: {prompt}\n\nFactual answer:",
+    "response_split": "Factual answer:"    
+}
+
+

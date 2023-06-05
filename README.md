@@ -78,6 +78,17 @@ completion = local_llm.create_completion(prompt="Hello, How are you?", max_token
 
 **Note:** If you host the API server at a different machine with a different address, you need to replace "http://0.0.0.0:8000/v1" with your address.
 
+## Download model
+You can automatically download a model from HuggingFace (HF) using `download_model.py`
+```bash
+python download-model.py organization/model
+```
+
+For example
+```bash
+python download-model.py facebook/opt-1.3b
+```
+
 ## Supported Pre-trained Weights
 A2I2 students and researchers can utilize the downloaded model weights stored in /weka/Projects/local_llms/model_weights/. It is important to note that models ending with 4bits-128g or 4bits require specific flags to be enabled during execution.
 For `*-4bits-128g` models, they should be executed with the flags `--wbits 4 --groupsize 128`.
