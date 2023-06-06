@@ -57,7 +57,7 @@ Examples are provided in `examples/`
 ### 2.2. Use LLM via API
 
 ### Step 1: Setting up the API server
-By default the APIs will be accessed via "http://0.0.0.0:8000/v1/". The documentation of the APIs is accessed via "http://0.0.0.0:8000/v1/docs#"
+By default the APIs will be accessed via "http://0.0.0.0:8000/v1/". The documentation of the APIs is accessed via "http://0.0.0.0:8000/docs"
 
 ```
 python -m llm_lib.server --model_path PATH_TO_MODEL_WEIGHT
