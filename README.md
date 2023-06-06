@@ -48,7 +48,7 @@ Supported parameters for `load_model`
 | Parameter | Description |
 | --- | --- |
 | model_path | Path to the downloaded model weights. (For A2I2 students/researchers, please refer to the Supported Pre-trained Weights section) |
-| load_in_8bit | Determines whether to load the model with 8-bit precision. This option allows for loading models using fewer GPUs, with a slight tradeoff in performance. |
+| load_in_8bit | Determines whether to load the model with 8-bit precision. This option allows for loading models using fewer GPU resources, with a slight tradeoff in performance. |
 | auto_devices | Controls whether the GPU usage is distributed across multiple GPUs automatically. |
 | wbits, groupsize | Parameters for utilizing GPTQ quantization. For more details, please refer to [this paper](https://arxiv.org/abs/2210.17323) and [this repository](https://github.com/qwopqwop200/GPTQ-for-LLaMa). |
 
