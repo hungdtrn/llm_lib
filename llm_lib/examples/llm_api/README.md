@@ -25,4 +25,4 @@ conda activate llm_lib
 python example.py --host http://HOST:PORT --sample_text "Answer the question: What do you know about the Applied Artificial Intelligence Institute?"
 ```
 
-Where HOST and PORT are what you recorded in Step 3.
+Where HOST and PORT need to be replaced with what you recorded in Step 3.
