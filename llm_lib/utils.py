@@ -62,6 +62,7 @@ def load_model(model_path, load_in_8bit=False, wbits=0, groupsize=-1, auto_devic
             suggestion = int(round(suggestion / 1000))
             print(f"\033[1;32;1mAuto-assiging --gpu-memory {suggestion} for your GPU to try to prevent out-of-memory errors.\nYou can manually set other values.\033[0;37;0m")
 
+            max_memory = {}
             for i in range(torch.cuda.device_count()):
                 _ = torch.tensor([0], device=i)
                 max_memory[i] = f'{suggestion}GIB'
