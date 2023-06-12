@@ -56,7 +56,7 @@ def load_model(model_path, load_in_8bit=False, wbits=0, groupsize=-1, auto_devic
         elif auto_devices:
             params["device_map"] = 'auto'
             total_mem = (torch.cuda.get_device_properties(0).total_memory / (1024 * 1024))
-            suggestion = round((total_mem - 2000) / 1000) * 1000
+            suggestion = round((total_mem - 3000) / 1000) * 1000
             if total_mem - suggestion < 800:
                 suggestion -= 1000
             suggestion = int(round(suggestion / 1000))
@@ -74,6 +74,7 @@ def load_model(model_path, load_in_8bit=False, wbits=0, groupsize=-1, auto_devic
         
         # if load_in_8bit and params.get('max_memory', None) is not None and params['device_map'] == 'auto':
         if params.get('max_memory', None) is not None and params['device_map'] == 'auto':
+            print("auto device")
             config = AutoConfig.from_pretrained(checkpoint)
             
             with init_empty_weights():
